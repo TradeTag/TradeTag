@@ -1,7 +1,17 @@
-# 扩展本地安装
+# TradeTag Chrome Extension
 
-在 Chrome 打开 `chrome://extensions`，开启开发者模式，选择“加载已解压的扩展程序”，选中本目录。
+## Install the preview
 
-公开预览包已预置 TradeTag 网关地址和公开客户端访问令牌，令牌可从扩展中提取并不视为秘密；网关由服务端按 IP 与全局限流。请勿将 Binance Web3 API Secret 配置在扩展中；凭证只放在受控服务器的环境文件。用户连接和签名由本机币安钱包完成，交易通过钱包管理的官方默认 RPC 广播。用户无需配置 RPC。
+Download the ZIP from the [TradeTag installation page](https://tradetag.site/install.html), extract it, open `chrome://extensions`, enable Developer mode, and select **Load unpacked**. Choose the extracted folder. Install and unlock Binance Wallet separately before using wallet features.
 
-开发环境配置：复制 `gateway/.env.example` 为 `gateway/.env`，填写币安 Web3 API 凭证并启动网关。发布扩展时请勿替换成或加入币安产品 API Secret。此预览包支持查询和报价；实际交易仍需你在已安装的钱包中核对并确认，钱包兼容性需要按网络测试。
+The public preview has the TradeTag gateway address and a public client token preconfigured. The token is extractable and is not a secret. The gateway enforces per-IP and global rate limits. Binance Web3 API product credentials must remain on the gateway server and must never be added to this extension.
+
+## Wallet and RPC
+
+Wallet connection and transaction confirmation use the wallet extension installed locally by the user. The wallet signs and broadcasts through its own default RPC; users do not enter an RPC URL. TradeTag does not read or store private keys, recovery phrases, login credentials, or signatures.
+
+## Local development
+
+Copy `gateway/.env.example` to `gateway/.env`, add Binance Web3 API credentials to the local gateway environment, and start the gateway. Never commit `.env` or include Binance API credentials in an extension package. For the public preview, the gateway endpoint is already configured in the extension.
+
+Token lookup, market data, and quote requests have been verified against the live gateway. Swap construction has been exercised without signing or broadcasting. Validate wallet signing and transaction submission on each supported network before relying on real transactions.

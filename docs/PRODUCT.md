@@ -1,40 +1,40 @@
-# 产品与 MVP 设计
+# Product and MVP Design
 
-## 产品定位
+## Positioning
 
-在 X 上看到代币提及时，用户无需离开当前页面即可识别代币、打开类似 X 内交易浮层的完整交易面板，并用币安钱包完成链上交易。产品是独立第三方工具，不代表币安官方产品，也不托管资产。
+TradeTag helps people review an asset when they encounter a token mention on X. The extension surfaces asset identity, available market data, and quotes without taking custody of funds. It is an independent third-party product and is not an official Binance product.
 
-## 首版范围
+## MVP scope
 
-1. Chrome Manifest V3 扩展仅在 `x.com` 与 `twitter.com` 运行。
-2. 核心面向长尾/新发 MEME：支持从 X 提取或由用户粘贴完整合约地址；ticker 搜索无结果时仍提供地址输入和链选择，不依赖白名单或热榜。
-3. 合约地址是代币身份主键。Ticker 搜索只用于发现候选；同名资产展示链、合约地址、流动性与风险提示供用户确认。
-4. 只在币安 Web3 Trading API 可报价且钱包支持签名的网络开放交易；遇到不支持链/资产时说明原因，不宣称覆盖所有链上资产。
-5. 点击/悬停代币标记，弹出完整交易面板：代币搜索/粘贴地址、链选择、K 线、价格、买/卖切换、金额输入、滑点与报价明细。
-6. 报价确认后由币安钱包扩展处理签名；明确展示网络、合约、金额、预估到账和费用。任何时候都不代签。
-7. 单页产品网站包含功能介绍、安全说明、安装步骤和扩展下载按钮。正式下载链接可通过部署环境变量配置。
+1. The Chrome Manifest V3 extension runs on `x.com` and `twitter.com`.
+2. Users can search a ticker or paste a full contract or mint address. Search results are candidates, not proof of identity; the user must verify the chain and address.
+3. A token contract or mint address is the asset identifier. Cards show the network and address alongside market data so similarly named assets can be distinguished.
+4. Trading is available only when Binance Web3 API returns a usable route and the installed wallet supports the selected network. TradeTag does not claim every asset or chain is tradable.
+5. The card provides asset lookup, price and candle data, buy/sell selection, amount entry, slippage settings, and a quote summary.
+6. The user reviews the transaction and confirms it in the locally installed wallet. TradeTag never signs on the user's behalf.
+7. The product website provides product information, privacy and security details, installation steps, and an extension download.
 
-## 用户流程
+## User flow
 
-1. 用户从产品网站下载并加载扩展。
-2. 用户在 X 帖子中点击识别出的 `$SOL` 等标记。
-3. X 内容中的 ticker/地址成为可交互入口，点击后打开浮层交易终端。
-4. 展示候选代币；同名 ticker 必须通过链与合约消歧。用户也可直接粘贴未上榜 MEME 的合约地址。
-5. 用户在终端里查看图表、切换买卖方向、输入金额和滑点，刷新获取新鲜报价。
-6. 用户确认交易意图后，由币安钱包扩展弹出签名窗口；签名、广播和结果回到终端。
+1. Download the extension from the TradeTag website and load it in Chrome.
+2. Select a detected ticker or enter a contract address on X.
+3. Choose the network and verify the asset identity in the card.
+4. Review available market data and candles.
+5. Enter an amount, choose a direction and slippage setting, then request a fresh quote.
+6. Review the transaction details and confirm or reject the request in the wallet.
 
-## 视觉方向
+## Visual direction
 
-- 币安风格的深色交易界面：近黑背景、暖黄色强调色、清晰数字层级与紧凑数据卡片。
-- 产品命名采用独立名称与标识；不复制币安商标，不暗示官方背书。
-- X 内交易浮层采用固定侧栏/浮层结构，兼容 X 的滚动与动态 DOM，不遮挡主要内容；支持最小化和关闭。
-- 所有操作提供加载、空结果、歧义选择、失败与成功状态；风险提示保持可见。
+- Use a focused dark trading interface with warm yellow accents and a clear hierarchy for numeric data.
+- Keep TradeTag's name and visual identity distinct from other brands. Do not imply official endorsement.
+- Use a floating card that works with X's scrolling and dynamic content and can be dismissed or minimized.
+- Show loading, empty, ambiguous, unavailable, error, and success states. Keep transaction risk guidance visible.
 
-## 关键产品决策
+## Product decisions
 
-- ticker 只是搜索词，不是唯一代币标识。交易前用户需确认网络和合约地址。
-- 产品以“无白名单的长尾 MEME 发现与交易”为目标，但实际可交易范围受币安 Web3 API 路由与钱包支持网络约束；UI 区分“查到代币”“可报价”“钱包可签名”三种状态。
-- 地址不携带链信息，不能仅凭地址长度可靠识别网络。
-- 报价是短时数据；确认交易前需刷新，并在 UI 显示报价时间。
-- 不自动弹窗、不自动交易；只有用户明确点击后才请求钱包签名。
-- 网站明确说明：币安 Web3 API 构建交易时会要求公开钱包地址；该地址经网关临时转发给币安 Web3 API，不写入日志或持久化。登录资料、私钥、助记词和签名留在本地币安钱包。
+- A ticker is a search term, not a unique asset identifier. Users must verify the network and contract address before trading.
+- Distinguish asset lookup, quote availability, and wallet compatibility as separate states.
+- An address alone does not reliably identify its network.
+- Quotes are short-lived. Refresh them before transaction construction and display the quote time.
+- Never open a wallet prompt or initiate a trade without an explicit user action.
+- Building a wallet-specific transaction requires a public wallet address. The gateway forwards it to Binance Web3 API for that request and does not log or persist it. Login credentials, private keys, recovery phrases, and signatures stay with the user's wallet.
