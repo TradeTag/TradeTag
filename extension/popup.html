@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TradeTag 设置</title>
+  <link rel="icon" href="icons/icon16.png">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <div class="brand"><img class="logo" src="icons/icon48.png" alt=""><span>TradeTag</span></div>
+    <h1>TradeTag 服务</h1>
+    <p class="intro">公开预览版已预置 TradeTag 网关访问配置。币安 Web3 API 凭证保存在服务器，钱包登录与签名由你本机的币安钱包完成。</p>
+    <label for="api">TradeTag 网关地址</label>
+    <input id="api" type="url" readonly>
+    <label for="gateway-token">网关访问配置</label>
+    <input id="gateway-token" type="text" autocomplete="off" readonly>
+    <button id="save-api">检查连接</button>
+    <p id="api-status" class="status" role="status"></p>
+
+    <div class="rule"><b>签名与广播</b><span>由币安钱包完成</span></div>
+    <small>扩展调用币安钱包的官方默认 RPC 完成广播。无需填写 RPC 地址；扩展不会读取或保存私钥、助记词。</small>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
