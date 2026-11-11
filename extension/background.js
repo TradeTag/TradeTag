@@ -17,7 +17,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     XTC_TRADE_QUOTE: () => tradeQuote(message.params),
     XTC_TRADE_SWAP: () => tradeSwap(message.params),
     XTC_TRADE_APPROVE: () => tradeApprove(message.params),
+    XTC_WALLET_BALANCES: () => walletBalances(message.params),
     XTC_WALLET_CONNECT: () => runWalletAction(_sender.tab?.id, message.chainId, 'connect'),
+    XTC_WALLET_WATCH: () => runWalletAction(_sender.tab?.id, message.chainId, 'watch'),
     XTC_WALLET_TRADE: () => runWalletAction(_sender.tab?.id, message.chainId, 'trade', message.transaction)
   };
   const run = jobs[message?.type];
@@ -163,6 +165,14 @@ async function tradeApprove(params = {}) {
   return gatewayRequest(`/v1/trade/approve?${query}`);
 }
 
+async function walletBalances(params = {}) {
+  return gatewayRequest('/v1/wallet/balances', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(params)
+  });
+}
+
 async function runWalletAction(tabId, chainId, action, transaction) {
   if (!Number.isInteger(tabId)) throw new Error('钱包操作必须从 X 页面发起。');
   const [{ result }] = await chrome.scripting.executeScript({
@@ -188,6 +198,19 @@ async function pageWalletAction(chainId, action, transaction) {
       const wallet = [...wallets].find((item) => /binance/i.test(item?.name || ''));
       if (!wallet) throw new Error('没有检测到币安钱包的 Solana Wallet Standard。请确认币安钱包已安装并解锁。');
       const features = wallet.features || {};
+      if (action === 'watch') {
+        const events = features['standard:events'];
+        let watched = window.__tradeTagSolanaWalletWatchers;
+        if (!(watched instanceof WeakSet)) window.__tradeTagSolanaWalletWatchers = watched = new WeakSet();
+        if (events?.on && !watched.has(wallet)) {
+          events.on('change', (change) => {
+            const address = change?.accounts?.[0]?.address || wallet.accounts?.[0]?.address || '';
+            window.dispatchEvent(new CustomEvent('tradetag-wallet-change', { detail: { address } }));
+          });
+          watched.add(wallet);
+        }
+        return { ok: true, data: { watching: Boolean(events?.on) } };
+      }
       if (action === 'connect') {
         if (!features['standard:connect']?.connect) throw new Error('币安钱包未提供 Wallet Standard connect 能力。');
         const connected = await features['standard:connect'].connect();
@@ -221,6 +244,16 @@ async function pageWalletAction(chainId, action, transaction) {
     const match = providers.find(({ info, provider }) => /binance/i.test(`${info.name || ''} ${info.rdns || ''} ${provider?.name || ''}`));
     if (!match?.provider) throw new Error('没有检测到币安钱包的 EVM Provider。');
     const provider = match.provider;
+    if (action === 'watch') {
+      let watched = window.__tradeTagEvmWalletWatchers;
+      if (!(watched instanceof WeakSet)) window.__tradeTagEvmWalletWatchers = watched = new WeakSet();
+      if (provider.on && !watched.has(provider)) {
+        provider.on('accountsChanged', (accounts) => window.dispatchEvent(new CustomEvent('tradetag-wallet-change', { detail: { address: accounts?.[0] || '' } })));
+        provider.on('chainChanged', (chainId) => window.dispatchEvent(new CustomEvent('tradetag-wallet-change', { detail: { chainId } })));
+        watched.add(provider);
+      }
+      return { ok: true, data: { watching: Boolean(provider.on) } };
+    }
     const expected = `0x${Number(chainId).toString(16)}`;
     const normalizeChain = (value) => {
       const text = String(value ?? '').trim().toLowerCase();

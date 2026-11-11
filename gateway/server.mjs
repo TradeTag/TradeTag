@@ -248,6 +248,34 @@ async function route(req, res, url) {
     return json(res, 200, value);
   }
 
+  if (req.method === 'POST' && url.pathname === '/v1/wallet/balances') {
+    const body = await readBody(req);
+    const chainId = chain(body.binanceChainId);
+    if (!['CT_501', '56', '8453', '1'].includes(chainId)) {
+      const error = new Error('Wallet balances are not enabled for this network.'); error.status = 400; error.code = 'UNSUPPORTED_BALANCE_CHAIN'; throw error;
+    }
+    const address = tokenAddress(body.address);
+    const stableTokenAddress = tokenAddress(body.stableTokenAddress);
+    const tradeTokenAddress = tokenAddress(body.tradeTokenAddress);
+    const isSolana = chainId === 'CT_501';
+    for (const candidate of [address, stableTokenAddress, tradeTokenAddress]) {
+      if (isSolana !== !candidate.startsWith('0x')) {
+        const error = new Error('Wallet and token addresses must match the selected network.'); error.status = 400; error.code = 'ADDRESS_CHAIN_MISMATCH'; throw error;
+      }
+    }
+    const tokenContractAddresses = [
+      { binanceChainId: chainId, tokenContractAddress: '' },
+      { binanceChainId: chainId, tokenContractAddress: stableTokenAddress },
+      { binanceChainId: chainId, tokenContractAddress: tradeTokenAddress }
+    ];
+    const value = await binanceRequest('POST', '/api/v1/dex/balance/token-balances-by-address', [], {
+      address,
+      tokenContractAddresses,
+      excludeRiskToken: '1'
+    });
+    return json(res, 200, value);
+  }
+
   if (req.method === 'GET' && url.pathname === '/v1/trade/quote') {
     const params = tradeParams(url.searchParams);
     return json(res, 200, await binanceRequest('GET', '/api/v1/dex/aggregator/quote', params));

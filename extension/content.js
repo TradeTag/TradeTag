@@ -6,10 +6,10 @@
   const discoverableToken = new RegExp(`${cashtag.source}|${tokenAddress.source}`, 'g');
   const copy = {
     en: {
-      token: "Token", tokenHint: "Token details and live market data", network: "Network", contract: "Token / contract address", search: "Search", addressPlaceholder: "Paste a ticker or contract address", idle: "Hover a token on X to preview", latestPrice: "Latest price", marketCap: "Market cap", liquidity: "Liquidity", volume24h: "24h volume", today: "Today", viewDetails: "View details", hideDetails: "Hide details", swap: "Swap", noChart: "No chart data available", chart: "Token price chart", notConnected: "Not connected", connect: "Connect Binance Wallet", buy: "Buy", sell: "Sell", quotePending: "Quote needed", amount: "Trade amount", amountPlaceholder: "Enter amount", max: "MAX", slippage: "Slippage", estimated: "Estimated received", quoteWait: "Shown after quote", getQuote: "Get live quote", confirm: "Confirm in Binance Wallet", notice: "Quotes by Binance Web3 API · review and confirm in your wallet", footer: "Verify the asset, network, amount, and wallet confirmation", settings: "Settings", language: "Panel language", textSize: "Text size", found: "Asset found", searchLoading: "Searching Binance Web3 API…", querying: "Searching…", searchFailed: "Token search failed", notFound: "No matching token was found.", resultCount: "{count} results", selectAsset: "Choose the asset that matches the network and contract", confirmAsset: "Verify the asset", missingAddress: "The search result has no contract address, so it cannot be verified.", loadingMarket: "Loading market data…", loadingQuote: "Loading Binance market data…", marketFailed: "Market data failed to load", noConnection: "Could not connect to the market service", quoteAvailable: "Ready for a quote", noPrice: "No price available", paymentAmount: "Pay amount", sellAmount: "Sell amount", invalidAmount: "Enter a valid amount greater than zero.", decimals: "This token supports up to {count} decimal places.", amountPositive: "Amount must be greater than zero.", invalidPrecision: "Token precision data is invalid.", failed: "The request failed.", connecting: "Connecting…", walletConnected: "Wallet connected", quoteSelect: "Search for and select a token first.", quoteConnect: "Connect Binance Wallet on the selected network first.", unsupportedPair: "This trading pair is not supported on the selected network.", quoting: "Requesting a quote…", noQuote: "Binance Web3 API returned no available quote.", missingQuoteId: "The quote has no quote ID. Request a fresh quote.", impact: " · price impact {value}%", bestRoute: "Best route · {vendor}", refreshQuote: "Refresh quote", quoteExpired: "Quote expired. Request a fresh quote.", building: "Building transaction…", rfq: "This asset returned an RFQ order, which needs a separate settlement flow. No swap was submitted.", invalidSolana: "Binance did not return a Solana transaction the wallet can send.", incompleteEvm: "Binance did not return a complete EVM transaction.", invalidApproval: "Binance did not return a valid token approval transaction.", walletConfirm: "Confirm in Binance Wallet…", txSubmitted: "Transaction submitted · ", walletSent: "Submitted by Binance Wallet", retry: "Retry trade", defaultToken: "Token", hoverTitle: "Hover to preview {token}", searchTooltip: "Search", close: "Close", quoteFrom: "Trade quote", selected: "Selected", tradeToken: "{verb} {token}"
+      token: "Token", tokenHint: "Token details and live market data", network: "Network", contract: "Token / contract address", search: "Search", addressPlaceholder: "Paste a ticker or contract address", idle: "Hover a token on X to preview", latestPrice: "Latest price", marketCap: "Market cap", liquidity: "Liquidity", volume24h: "24h volume", today: "Today", viewDetails: "View details", hideDetails: "Hide details", swap: "Swap", noChart: "No chart data available", chart: "Token price chart", notConnected: "Not connected", connect: "Connect Binance Wallet", buy: "Buy", sell: "Sell", quotePending: "Quote needed", amount: "Trade amount", amountPlaceholder: "Enter amount", max: "MAX", slippage: "Slippage", estimated: "Estimated received", quoteWait: "Shown after quote", getQuote: "Get live quote", confirm: "Confirm in Binance Wallet", notice: "Quotes by Binance Web3 API · review and confirm in your wallet", footer: "Verify the asset, network, amount, and wallet confirmation", settings: "Settings", language: "Panel language", textSize: "Text size", found: "Asset found", searchLoading: "Searching Binance Web3 API…", querying: "Searching…", searchFailed: "Token search failed", notFound: "No matching token was found.", resultCount: "{count} results", selectAsset: "Choose the asset that matches the network and contract", confirmAsset: "Verify the asset", missingAddress: "The search result has no contract address, so it cannot be verified.", loadingMarket: "Loading market data…", loadingQuote: "Loading Binance market data…", marketFailed: "Market data failed to load", noConnection: "Could not connect to the market service", quoteAvailable: "Ready for a quote", noPrice: "No price available", paymentAmount: "Pay amount", sellAmount: "Sell amount", walletBalances: "Wallet balances", nativeBalance: "Network coin", stableBalance: "Stablecoin", tokenBalance: "Trade token", balanceLoading: "Updating balances…", balanceUpdated: "Updated", balanceUnavailable: "Balance data unavailable", sellPercent: "Sell percentage", invalidAmount: "Enter a valid amount greater than zero.", decimals: "This token supports up to {count} decimal places.", amountPositive: "Amount must be greater than zero.", invalidPrecision: "Token precision data is invalid.", failed: "The request failed.", connecting: "Connecting…", walletConnected: "Wallet connected", quoteSelect: "Search for and select a token first.", quoteConnect: "Connect Binance Wallet on the selected network first.", unsupportedPair: "This trading pair is not supported on the selected network.", quoting: "Requesting a quote…", noQuote: "Binance Web3 API returned no available quote.", missingQuoteId: "The quote has no quote ID. Request a fresh quote.", impact: " · price impact {value}%", bestRoute: "Best route · {vendor}", refreshQuote: "Refresh quote", quoteExpired: "Quote expired. Request a fresh quote.", building: "Building transaction…", rfq: "This asset returned an RFQ order, which needs a separate settlement flow. No swap was submitted.", invalidSolana: "Binance did not return a Solana transaction the wallet can send.", incompleteEvm: "Binance did not return a complete EVM transaction.", invalidApproval: "Binance did not return a valid token approval transaction.", walletConfirm: "Confirm in Binance Wallet…", txSubmitted: "Transaction submitted · ", walletSent: "Submitted by Binance Wallet", retry: "Retry trade", defaultToken: "Token", hoverTitle: "Hover to preview {token}", searchTooltip: "Search", close: "Close", quoteFrom: "Trade quote", selected: "Selected", tradeToken: "{verb} {token}"
     },
     zh: {
-      token: "代币", tokenHint: "代币资料与实时行情", network: "网络", contract: "代币 / 合约地址", search: "查询", addressPlaceholder: "粘贴 ticker 或合约地址", idle: "悬停 X 上的代币即可预览", latestPrice: "最新价格", marketCap: "市值", liquidity: "流动性", volume24h: "24 小时成交量", today: "今日", viewDetails: "查看详情", hideDetails: "收起详情", swap: "交易", noChart: "暂无 K 线数据", chart: "代币价格图表", notConnected: "未连接", connect: "连接币安钱包", buy: "买入", sell: "卖出", quotePending: "待获取报价", amount: "交易金额", amountPlaceholder: "输入金额", max: "最大", slippage: "滑点容忍", estimated: "预计到账", quoteWait: "获取报价后显示", getQuote: "获取实时报价", confirm: "在币安钱包确认", notice: "报价来自币安 Web3 API · 请在钱包中核对并确认", footer: "请核对资产、网络、金额与钱包确认内容", settings: "设置", language: "面板语言", textSize: "字体大小", found: "已找到资产", searchLoading: "正在通过币安 Web3 API 搜索…", querying: "正在查询…", searchFailed: "代币搜索失败", notFound: "没有找到匹配的代币。", resultCount: "{count} 个结果", selectAsset: "选择链和合约地址匹配的资产", confirmAsset: "请确认资产", missingAddress: "搜索结果缺少合约地址，无法核实资产。", loadingMarket: "正在加载行情…", loadingQuote: "正在获取币安行情…", marketFailed: "行情加载失败", noConnection: "无法连接行情服务", quoteAvailable: "可以获取报价", noPrice: "暂无价格", paymentAmount: "支付金额", sellAmount: "卖出数量", invalidAmount: "请输入大于零的有效金额。", decimals: "该代币最多支持 {count} 位小数。", amountPositive: "金额必须大于零。", invalidPrecision: "代币精度数据无效。", failed: "请求失败。", connecting: "正在连接…", walletConnected: "已连接币安钱包", quoteSelect: "请先查询并选择代币。", quoteConnect: "请先连接当前网络的币安钱包。", unsupportedPair: "当前网络暂不支持该交易对。", quoting: "正在向币安询价…", noQuote: "币安 Web3 API 没有返回可用报价。", missingQuoteId: "报价缺少 quoteId，请重新查询。", impact: " · 价格影响 {value}%", bestRoute: "最优路由 · {vendor}", refreshQuote: "重新获取报价", quoteExpired: "报价已过期，请重新获取。", building: "正在构建交易…", rfq: "该资产返回 RFQ 订单，需要单独结算流程；当前未提交兑换。", invalidSolana: "币安未返回可由 Solana 钱包发送的完整交易。", incompleteEvm: "币安未返回完整的 EVM 交易。", invalidApproval: "币安未返回有效的代币授权交易。", walletConfirm: "请在币安钱包确认…", txSubmitted: "交易已提交 · ", walletSent: "币安钱包已提交交易", retry: "重试交易", defaultToken: "代币", hoverTitle: "悬停预览 {token}", searchTooltip: "查询", close: "关闭", quoteFrom: "交易报价", selected: "已选择", tradeToken: "{verb} {token}"
+      token: "代币", tokenHint: "代币资料与实时行情", network: "网络", contract: "代币 / 合约地址", search: "查询", addressPlaceholder: "粘贴 ticker 或合约地址", idle: "悬停 X 上的代币即可预览", latestPrice: "最新价格", marketCap: "市值", liquidity: "流动性", volume24h: "24 小时成交量", today: "今日", viewDetails: "查看详情", hideDetails: "收起详情", swap: "交易", noChart: "暂无 K 线数据", chart: "代币价格图表", notConnected: "未连接", connect: "连接币安钱包", buy: "买入", sell: "卖出", quotePending: "待获取报价", amount: "交易金额", amountPlaceholder: "输入金额", max: "最大", slippage: "滑点容忍", estimated: "预计到账", quoteWait: "获取报价后显示", getQuote: "获取实时报价", confirm: "在币安钱包确认", notice: "报价来自币安 Web3 API · 请在钱包中核对并确认", footer: "请核对资产、网络、金额与钱包确认内容", settings: "设置", language: "面板语言", textSize: "字体大小", found: "已找到资产", searchLoading: "正在通过币安 Web3 API 搜索…", querying: "正在查询…", searchFailed: "代币搜索失败", notFound: "没有找到匹配的代币。", resultCount: "{count} 个结果", selectAsset: "选择链和合约地址匹配的资产", confirmAsset: "请确认资产", missingAddress: "搜索结果缺少合约地址，无法核实资产。", loadingMarket: "正在加载行情…", loadingQuote: "正在获取币安行情…", marketFailed: "行情加载失败", noConnection: "无法连接行情服务", quoteAvailable: "可以获取报价", noPrice: "暂无价格", paymentAmount: "支付金额", sellAmount: "卖出数量", walletBalances: "钱包余额", nativeBalance: "链上原生币", stableBalance: "稳定币", tokenBalance: "交易代币", balanceLoading: "正在更新余额…", balanceUpdated: "已更新", balanceUnavailable: "余额暂时不可用", sellPercent: "卖出比例", invalidAmount: "请输入大于零的有效金额。", decimals: "该代币最多支持 {count} 位小数。", amountPositive: "金额必须大于零。", invalidPrecision: "代币精度数据无效。", failed: "请求失败。", connecting: "正在连接…", walletConnected: "已连接币安钱包", quoteSelect: "请先查询并选择代币。", quoteConnect: "请先连接当前网络的币安钱包。", unsupportedPair: "当前网络暂不支持该交易对。", quoting: "正在向币安询价…", noQuote: "币安 Web3 API 没有返回可用报价。", missingQuoteId: "报价缺少 quoteId，请重新查询。", impact: " · 价格影响 {value}%", bestRoute: "最优路由 · {vendor}", refreshQuote: "重新获取报价", quoteExpired: "报价已过期，请重新获取。", building: "正在构建交易…", rfq: "该资产返回 RFQ 订单，需要单独结算流程；当前未提交兑换。", invalidSolana: "币安未返回可由 Solana 钱包发送的完整交易。", incompleteEvm: "币安未返回完整的 EVM 交易。", invalidApproval: "币安未返回有效的代币授权交易。", walletConfirm: "请在币安钱包确认…", txSubmitted: "交易已提交 · ", walletSent: "币安钱包已提交交易", retry: "重试交易", defaultToken: "代币", hoverTitle: "悬停预览 {token}", searchTooltip: "查询", close: "关闭", quoteFrom: "交易报价", selected: "已选择", tradeToken: "{verb} {token}"
     }
   };
   let preferences = { language: "en", fontSize: 15 };
@@ -85,7 +85,9 @@
           </section>
           <section class="trade-details" hidden>
             <div class="wallet-row"><button class="wallet-connect" type="button" data-tt-key="connect">Connect Binance Wallet</button><span class="wallet-state" data-tt-key="notConnected">Not connected</span></div>
+            <section class="wallet-balances" hidden aria-live="polite"><div class="balances-header"><span data-tt-key="walletBalances">Wallet balances</span><span class="balance-state"></span></div><div class="balances-grid"><div><small data-tt-key="nativeBalance">Network coin</small><b class="balance-native">—</b></div><div><small data-tt-key="stableBalance">Stablecoin</small><b class="balance-stable">—</b></div><div><small data-tt-key="tokenBalance">Trade token</small><b class="balance-token">—</b></div></div></section>
             <div class="mode-tabs"><button class="selected" type="button" data-mode="buy" data-tt-key="buy">Buy</button><button type="button" data-mode="sell" data-tt-key="sell">Sell</button><span class="availability" data-tt-key="quotePending">Quote needed</span></div>
+            <div class="sell-presets" hidden><span data-tt-key="sellPercent">Sell percentage</span><div><button type="button" data-percent="10">10%</button><button type="button" data-percent="25">25%</button><button type="button" data-percent="50">50%</button><button type="button" data-percent="100">100%</button></div></div>
             <div class="amount-label"><span data-tt-key="amount">Trade amount</span><span class="unit">USDC</span></div>
             <div class="amount"><span class="currency-symbol">$</span><input inputmode="decimal" data-tt-placeholder="amountPlaceholder" placeholder="Enter amount" /><button type="button" data-tt-key="max">MAX</button></div>
             <div class="slippage"><span data-tt-key="slippage">Slippage</span><select><option>0.5%</option><option selected>1.0%</option><option>3.0%</option></select></div>
@@ -100,6 +102,47 @@
       root.querySelector(".close").onclick = hideCard;
       root.querySelector(".card").addEventListener("mouseenter", () => clearTimeout(hideTimer));
       root.querySelector(".card").addEventListener("mouseleave", scheduleHide);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") refreshWalletBalances(root, { force: true, quiet: true });
+      });
+      window.addEventListener("focus", () => refreshWalletBalances(root, { force: true, quiet: true }));
+      window.addEventListener("tradetag-wallet-change", (event) => {
+        const state = root.__tradeTag;
+        const change = event.detail || {};
+        if (!state?.wallet || !state.selectedToken) return;
+        if (change.address !== undefined) {
+          if (!change.address) {
+            state.wallet = null;
+            state.quote = null;
+            clearBalanceRefresh(state);
+            root.querySelector('.wallet-balances').hidden = true;
+            setMessage(root.querySelector('.wallet-state'), 'notConnected');
+            setMessage(root.querySelector('.wallet-connect'), 'connect');
+            setMessage(root.querySelector('.availability'), 'quoteConnect');
+            root.querySelector('.trade').disabled = true;
+            updateAmountUnit(root);
+            return;
+          }
+          state.wallet.address = change.address;
+        }
+        if (change.chainId) {
+          const changedChain = String(change.chainId).startsWith('0x') ? BigInt(change.chainId).toString() : String(change.chainId);
+          if (changedChain !== String(state.selectedToken.chainId)) {
+            state.wallet = null;
+            state.quote = null;
+            clearBalanceRefresh(state);
+            root.querySelector('.wallet-balances').hidden = true;
+            setMessage(root.querySelector('.wallet-state'), 'notConnected');
+            setMessage(root.querySelector('.wallet-connect'), 'connect');
+            setMessage(root.querySelector('.availability'), 'quoteConnect');
+            root.querySelector('.trade').disabled = true;
+            updateAmountUnit(root);
+            return;
+          }
+        }
+        root.querySelector('.wallet-state').textContent = shortAddress(state.wallet.address);
+        refreshWalletBalances(root, { force: true, quiet: true });
+      });
       root.querySelector(".details-button").addEventListener("click", () => {
         const details = root.querySelector(".details-extra");
         details.hidden = !details.hidden;
@@ -111,6 +154,7 @@
         root.querySelector(".trade-details").hidden = false;
         positionCard();
         root.querySelector(".card").scrollTo({ top: root.querySelector(".trade-details").offsetTop - 10, behavior: "smooth" });
+        refreshWalletBalances(root, { force: true, quiet: true });
       });
       root.querySelector(".settings-toggle").addEventListener("click", () => {
         const panel = root.querySelector(".settings-panel");
@@ -141,16 +185,28 @@
         const token = root.__tradeTagTokens?.[Number(button.dataset.tokenIndex)];
         if (token) loadSelectedToken(root, token);
       });
-      root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false };
+      root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false, balances: null, balanceAt: 0, balancePending: null, balanceTimer: 0 };
       root.querySelector(".wallet-connect").onclick = () => connectWallet(root);
       root.querySelector(".quote-button").onclick = () => getQuote(root);
       root.querySelector(".trade").onclick = () => executeTrade(root);
-      root.querySelector("#xtc-chain").addEventListener("change", () => { root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy' }; setMessage(root.querySelector(".wallet-state"), "notConnected"); root.querySelector(".trade").disabled = true; });
+      root.querySelector(".amount button").addEventListener("click", () => applyBalanceAmount(root, 100));
+      root.querySelectorAll(".sell-presets button").forEach((button) => button.addEventListener("click", () => applyBalanceAmount(root, Number(button.dataset.percent))));
+      root.querySelector(".trade-details").addEventListener("focusin", () => refreshWalletBalances(root, { quiet: true }));
+      root.querySelector("#xtc-chain").addEventListener("change", () => {
+        clearBalanceRefresh(root.__tradeTag);
+        root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false, balances: null, balanceAt: 0, balancePending: null, balanceTimer: 0 };
+        root.querySelector(".wallet-balances").hidden = true;
+        root.querySelector(".wallet-connect").disabled = false;
+        setMessage(root.querySelector(".wallet-state"), "notConnected");
+        root.querySelector(".trade").disabled = true;
+        updateAmountUnit(root);
+      });
       root.querySelector(".amount input").addEventListener("input", () => { root.__tradeTag.quote = null; root.querySelector(".trade").disabled = true; });
       root.querySelectorAll(".mode-tabs button").forEach((button) => button.onclick = () => {
         root.querySelectorAll(".mode-tabs button").forEach((item) => item.classList.toggle("selected", item === button));
         root.__tradeTag.mode = button.dataset.mode; root.__tradeTag.quote = null; root.querySelector(".trade").disabled = true;
         updateAmountUnit(root);
+        refreshWalletBalances(root, { force: true, quiet: true });
       });
     }
     scan();
@@ -220,6 +276,7 @@
     clearTimeout(openTimer);
     clearTimeout(hideTimer);
     const host = document.getElementById(hostId);
+    clearBalanceRefresh(host?.shadowRoot?.__tradeTag);
     if (host?.shadowRoot) host.shadowRoot.querySelector(".card").hidden = true;
     activeQuery = "";
     activeChain = "";
@@ -284,10 +341,12 @@
     activeChain = chainId;
     const sequence = ++requestSeq;
     const root = document.getElementById(hostId).shadowRoot;
-    root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false };
+    clearBalanceRefresh(root.__tradeTag);
+    root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false, balances: null, balanceAt: 0, balancePending: null, balanceTimer: 0 };
     root.querySelector(".card").hidden = false;
     root.querySelector(".details-extra").hidden = true;
     root.querySelector(".trade-details").hidden = true;
+    updateAmountUnit(root);
     setMessage(root.querySelector(".details-button"), "viewDetails");
     positionCard(anchor);
     root.querySelector("#xtc-address").value = query;
@@ -312,6 +371,9 @@
     root.querySelector(".chart-y-axis").replaceChildren();
     root.querySelector(".chart-current").replaceChildren();
     root.querySelector(".contract").textContent = "";
+    root.querySelector(".wallet-balances").hidden = true;
+    root.querySelector(".sell-presets").hidden = true;
+    root.querySelector(".amount input").value = "";
     root.querySelector(".symbol").textContent = query.startsWith("$") ? query.slice(1).toUpperCase() : message("defaultToken");
       setMessage(root.querySelector(".name"), "searchLoading");
     setMessage(root.querySelector(".status"), "querying");
@@ -422,6 +484,7 @@
       if (hasChart) root.querySelector(".chart-empty").hidden = true;
       else { setMessage(root.querySelector(".chart-empty"), "noChart"); root.querySelector(".chart-empty").hidden = false; }
       updateAmountUnit(root);
+      refreshWalletBalances(root, { force: true, quiet: true });
         positionCard();
     });
   }
@@ -441,6 +504,12 @@
     root.querySelector('.unit').textContent = unit || message('defaultToken');
     root.querySelector('.currency-symbol').textContent = isBuy ? '$' : '';
     setMessage(root.querySelector('.amount-label>span:first-child'), isBuy ? 'paymentAmount' : 'sellAmount');
+    const presets = root.querySelector('.sell-presets');
+    if (presets) presets.hidden = isBuy;
+    const balance = isBuy ? state?.balances?.stable : state?.balances?.token;
+    const max = root.querySelector('.amount button');
+    if (max) max.disabled = !state?.wallet || !balance;
+    root.querySelectorAll('.sell-presets button').forEach((button) => { button.disabled = !state?.wallet || !balance; });
   }
 
   function formatPrice(value) {
@@ -513,8 +582,121 @@
       setMessage(root.querySelector('.availability'), 'walletConnected');
       root.querySelector('.trade').disabled = true;
       button.textContent = message('walletConnected');
+      root.querySelector('.wallet-balances').hidden = false;
+      setMessage(root.querySelector('.balance-state'), 'balanceLoading');
+      await sendMessage({ type: 'XTC_WALLET_WATCH', chainId }).catch(() => {});
+      await refreshWalletBalances(root, { force: true });
+      startBalanceRefresh(root);
     } catch (error) { showError(root, error); setMessage(button, 'connect'); }
     finally { button.disabled = false; state.busy = false; }
+  }
+
+  function nativeSymbol(chainId) {
+    return ({ CT_501: 'SOL', '56': 'BNB', '8453': 'ETH', '1': 'ETH' })[String(chainId)] || 'Native';
+  }
+
+  function displayBalance(value) {
+    const text = String(value ?? '0');
+    if (!/^\d+(?:\.\d+)?$/.test(text)) return '0';
+    const [whole, fraction = ''] = text.split('.');
+    const trimmed = fraction.slice(0, 8).replace(/0+$/, '');
+    return trimmed ? `${whole}.${trimmed}` : whole;
+  }
+
+  function balanceEntry(assets, chainId, tokenAddress, fallbackSymbol, native = false) {
+    const normalize = (value) => chainId === 'CT_501' ? String(value || '') : String(value || '').toLowerCase();
+    const normalized = normalize(tokenAddress);
+    const isNativeAddress = (value) => {
+      const address = String(value || '').toLowerCase();
+      return !address || address === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' || address === '11111111111111111111111111111111';
+    };
+    const asset = assets.find((item) => String(item.binanceChainId || chainId) === String(chainId)
+      && (native ? isNativeAddress(item.tokenContractAddress) : normalize(item.tokenContractAddress) === normalized));
+    return { amount: String(asset?.balance ?? '0'), symbol: asset?.symbol || fallbackSymbol };
+  }
+
+  async function refreshWalletBalances(root, { force = false, quiet = false } = {}) {
+    const state = root.__tradeTag;
+    const token = state?.selectedToken;
+    if (!state?.wallet || !token || state.wallet.chainId !== token.chainId
+      || root.querySelector('.card').hidden || root.querySelector('.trade-details').hidden) return;
+    if (state.balancePending) return state.balancePending;
+    if (!force && Date.now() - (state.balanceRequestedAt || 0) < 3500) return;
+    const stable = inputTokens[token.chainId];
+    if (!stable) return;
+    state.balanceRequestedAt = Date.now();
+    root.querySelector('.wallet-balances').hidden = false;
+    if (!quiet) setMessage(root.querySelector('.balance-state'), 'balanceLoading');
+    const request = sendMessage({ type: 'XTC_WALLET_BALANCES', params: {
+      binanceChainId: token.chainId,
+      address: state.wallet.address,
+      stableTokenAddress: stable.address,
+      tradeTokenAddress: token.address
+    } }).then((response) => {
+      if (root.__tradeTag !== state) return;
+      const assets = (Array.isArray(response?.data) ? response.data : []).flatMap((entry) => Array.isArray(entry?.tokenAssets) ? entry.tokenAssets : []);
+      state.balances = {
+        native: balanceEntry(assets, token.chainId, '', nativeSymbol(token.chainId), true),
+        stable: balanceEntry(assets, token.chainId, stable.address, stable.symbol),
+        token: balanceEntry(assets, token.chainId, token.address, token.symbol || message('defaultToken'))
+      };
+      state.balanceAt = Date.now();
+      root.querySelector('.balance-native').textContent = `${displayBalance(state.balances.native.amount)} ${state.balances.native.symbol}`;
+      root.querySelector('.balance-stable').textContent = `${displayBalance(state.balances.stable.amount)} ${state.balances.stable.symbol}`;
+      root.querySelector('.balance-token').textContent = `${displayBalance(state.balances.token.amount)} ${state.balances.token.symbol}`;
+      setMessage(root.querySelector('.balance-state'), 'balanceUpdated');
+      updateAmountUnit(root);
+    }).catch(() => {
+      if (root.__tradeTag !== state) return;
+      setMessage(root.querySelector('.balance-state'), 'balanceUnavailable');
+    }).finally(() => {
+      if (state.balancePending === request) state.balancePending = null;
+    });
+    state.balancePending = request;
+    return request;
+  }
+
+  function clearBalanceRefresh(state) {
+    if (state?.balanceTimer) clearInterval(state.balanceTimer);
+    if (state) state.balanceTimer = 0;
+  }
+
+  function startBalanceRefresh(root) {
+    const state = root.__tradeTag;
+    clearBalanceRefresh(state);
+    state.balanceTimer = setInterval(() => {
+      if (document.visibilityState === 'visible') refreshWalletBalances(root, { force: true, quiet: true });
+    }, 20_000);
+  }
+
+  function unitsFromBalance(value, decimals) {
+    const text = String(value ?? '0');
+    if (!/^\d+(?:\.\d+)?$/.test(text) || !Number.isInteger(decimals) || decimals < 0 || decimals > 30) return 0n;
+    const [whole, fraction = ''] = text.split('.');
+    return BigInt(whole) * (10n ** BigInt(decimals)) + BigInt((fraction + '0'.repeat(decimals)).slice(0, decimals) || '0');
+  }
+
+  function inputAmountFromUnits(value, decimals) {
+    const raw = BigInt(value).toString().padStart(decimals + 1, '0');
+    if (!decimals) return raw;
+    const whole = raw.slice(0, -decimals) || '0';
+    const fraction = raw.slice(-decimals).replace(/0+$/, '');
+    return fraction ? `${whole}.${fraction}` : whole;
+  }
+
+  async function applyBalanceAmount(root, percent) {
+    const state = root.__tradeTag;
+    const token = state?.selectedToken;
+    if (!state?.wallet || !token) { showError(root, new Error(message('quoteConnect'))); return; }
+    if (!state.balances || Date.now() - (state.balanceAt || 0) > 12_000) await refreshWalletBalances(root, { force: true, quiet: true });
+    const balance = state.mode === 'buy' ? state.balances?.stable : state.balances?.token;
+    const decimals = state.mode === 'buy' ? inputTokens[token.chainId]?.decimals : Number(token.decimals);
+    if (!balance || !Number.isInteger(decimals)) { showError(root, new Error(message('balanceUnavailable'))); return; }
+    const amount = unitsFromBalance(balance.amount, decimals) * BigInt(percent) / 100n;
+    if (amount <= 0n) { showError(root, new Error(message('balanceUnavailable'))); return; }
+    const input = root.querySelector('.amount input');
+    input.value = inputAmountFromUnits(amount, decimals);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
   }
 
   async function getQuote(root) {
@@ -523,6 +705,7 @@
     if (!token) { showError(root, new Error(message('quoteSelect'))); return; }
     if (!state.wallet || state.wallet.chainId !== token.chainId) { showError(root, new Error(message('quoteConnect'))); return; }
     const isBuy = state.mode === 'buy';
+    refreshWalletBalances(root, { force: true, quiet: true });
     const inputToken = isBuy ? inputTokens[token.chainId] : token;
     const outputToken = isBuy ? token : inputTokens[token.chainId];
     if (!inputToken || !outputToken) { showError(root, new Error(message('unsupportedPair'))); return; }
@@ -601,6 +784,7 @@
       setMessage(root.querySelector('.availability'), 'walletSent');
       state.quote = null;
       button.textContent = message('walletSent');
+      [1800, 6500].forEach((delay) => setTimeout(() => refreshWalletBalances(root, { force: true, quiet: true }), delay));
     } catch (error) { showError(root, error); button.disabled = false; setMessage(button, 'retry'); }
     finally { state.busy = false; }
   }

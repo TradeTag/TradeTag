@@ -58,6 +58,14 @@
 :host .wallet-connect{min-height:36px;padding:0 12px;border:1px solid #f0b90b;border-radius:7px;background:#181d22;color:#f0b90b;font:inherit;font-size:.82em;font-weight:700;cursor:pointer}
 :host .wallet-connect:disabled{opacity:.55;cursor:wait}
 :host .wallet-state{color:#9da6b0;font-size:.78em}
+:host .wallet-balances{margin:9px 0 12px;padding:9px 10px;border:1px solid #282f36;border-radius:7px;background:#10151a}
+:host .wallet-balances[hidden]{display:none}
+:host .balances-header{display:flex;justify-content:space-between;gap:10px;margin-bottom:7px;color:#9da6b0;font-size:.72em}
+:host .balance-state{color:#69737e;text-align:right}
+:host .balances-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+:host .balances-grid>div{min-width:0}
+:host .balances-grid small{display:block;color:#89929d;font-size:.7em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:host .balances-grid b{display:block;margin-top:2px;color:#e8eaed;font-size:.82em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 :host .mode-tabs{display:flex;align-items:center;gap:8px;margin:12px 0}
 :host .mode-tabs button{flex:1;min-height:40px;padding:7px;border:1px solid #343b44;border-radius:7px;background:#1b2026;color:#a3abb4;font:inherit;font-size:.9em;cursor:pointer}
 :host .mode-tabs button.selected{border-color:#f0b90b;background:#f0b90b;color:#121416;font-weight:700}
@@ -68,6 +76,13 @@
 :host .amount>span{color:#a7afb7}
 :host .amount input{flex:1;min-width:0;border:0;background:transparent}
 :host .amount button{border:0;background:transparent;color:#f0b90b;font:inherit;font-size:.76em;cursor:pointer}
+:host .amount button:disabled{opacity:.5;cursor:not-allowed}
+:host .sell-presets{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 0 9px;color:#aeb5bd;font-size:.76em}
+:host .sell-presets[hidden]{display:none}
+:host .sell-presets>div{display:flex;gap:6px}
+:host .sell-presets button{min-width:48px;min-height:30px;padding:0 7px;border:1px solid #343b44;border-radius:6px;background:#151a20;color:#e2e5e8;font:inherit;cursor:pointer}
+:host .sell-presets button:hover,:host .sell-presets button:focus-visible{border-color:#f0b90b;color:#f0b90b}
+:host .sell-presets button:disabled{opacity:.5;cursor:not-allowed}
 :host .slippage{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:#aeb5bd;font-size:.82em}
 :host .slippage select{width:108px;min-height:36px}
 :host .quote{display:flex;justify-content:space-between;gap:12px;margin-top:13px;padding-top:12px;border-top:1px solid #2c333a;color:#aeb5bd;font-size:.78em}
