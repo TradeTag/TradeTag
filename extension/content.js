@@ -141,7 +141,7 @@
         const token = root.__tradeTagTokens?.[Number(button.dataset.tokenIndex)];
         if (token) loadSelectedToken(root, token);
       });
-      root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy' };
+      root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false };
       root.querySelector(".wallet-connect").onclick = () => connectWallet(root);
       root.querySelector(".quote-button").onclick = () => getQuote(root);
       root.querySelector(".trade").onclick = () => executeTrade(root);
@@ -230,7 +230,8 @@
     clearTimeout(hideTimer);
     hideTimer = setTimeout(() => {
       const card = document.getElementById(hostId)?.shadowRoot?.querySelector(".card");
-      if (card?.matches(":hover") || activeAnchor?.matches(":hover")) return;
+      const state = document.getElementById(hostId)?.shadowRoot?.__tradeTag;
+      if (state?.busy || card?.matches(":hover") || activeAnchor?.matches(":hover")) return;
       hideCard();
     }, 550);
   }
@@ -283,7 +284,7 @@
     activeChain = chainId;
     const sequence = ++requestSeq;
     const root = document.getElementById(hostId).shadowRoot;
-    root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy' };
+    root.__tradeTag = { selectedToken: null, wallet: null, quote: null, quoteAt: 0, mode: 'buy', busy: false };
     root.querySelector(".card").hidden = false;
     root.querySelector(".details-extra").hidden = true;
     root.querySelector(".trade-details").hidden = true;
@@ -503,6 +504,7 @@
     const chainId = root.querySelector('#xtc-chain').value;
     const button = root.querySelector('.wallet-connect');
     root.querySelector('.error').hidden = true;
+    state.busy = true;
     button.disabled = true; setMessage(button, 'connecting');
     try {
       const wallet = await sendMessage({ type: 'XTC_WALLET_CONNECT', chainId });
@@ -512,7 +514,7 @@
       root.querySelector('.trade').disabled = true;
       button.textContent = message('walletConnected');
     } catch (error) { showError(root, error); setMessage(button, 'connect'); }
-    finally { button.disabled = false; }
+    finally { button.disabled = false; state.busy = false; }
   }
 
   async function getQuote(root) {
@@ -556,6 +558,7 @@
     if (!state?.quote || !state.wallet) { showError(root, new Error(message('quoteConnect'))); return; }
     if (Date.now() - state.quoteAt > 25_000) { showError(root, new Error(message('quoteExpired'))); state.quote = null; root.querySelector('.trade').disabled = true; return; }
     const button = root.querySelector('.trade');
+    state.busy = true;
     button.disabled = true; setMessage(button, 'building');
     root.querySelector('.error').hidden = true;
     try {
@@ -599,6 +602,7 @@
       state.quote = null;
       button.textContent = message('walletSent');
     } catch (error) { showError(root, error); button.disabled = false; setMessage(button, 'retry'); }
+    finally { state.busy = false; }
   }
 
   function explorerUrl(chainId, hash) {

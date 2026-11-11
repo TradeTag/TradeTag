@@ -10,7 +10,7 @@ The public preview has the TradeTag gateway address and a public client token pr
 
 ## Wallet and RPC
 
-Wallet connection and transaction confirmation use the wallet extension installed locally by the user. The wallet signs and broadcasts through its own default RPC; users do not enter an RPC URL. TradeTag does not read or store private keys, recovery phrases, login credentials, or signatures.
+Wallet connection and transaction confirmation use the wallet extension installed locally by the user. For EVM assets, TradeTag requests a wallet-approved switch to the token's network before connecting or submitting. The wallet signs and broadcasts through its own default RPC; users do not enter an RPC URL. TradeTag does not read or store private keys, recovery phrases, login credentials, or signatures.
 
 ## Local development
 

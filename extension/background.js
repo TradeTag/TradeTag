@@ -211,8 +211,27 @@ async function pageWalletAction(chainId, action, transaction) {
     if (!match?.provider) throw new Error('没有检测到币安钱包的 EVM Provider。');
     const provider = match.provider;
     const expected = `0x${Number(chainId).toString(16)}`;
-    const actual = await provider.request({ method: 'eth_chainId' });
-    if (String(actual).toLowerCase() !== expected.toLowerCase()) throw new Error(`币安钱包当前网络为 ${actual}，请切换到 ${chainId}。`);
+    const normalizeChain = (value) => {
+      const text = String(value ?? '').trim().toLowerCase();
+      try { return BigInt(text).toString(); } catch { return text; }
+    };
+    let actual = '';
+    try { actual = await provider.request({ method: 'eth_chainId' }); } catch {}
+    if (normalizeChain(actual) !== normalizeChain(chainId)) {
+      const networkName = ({ '56': 'BNB Chain', '8453': 'Base', '1': 'Ethereum' })[chainId] || `chain ${chainId}`;
+      try {
+        await provider.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: expected }] });
+      } catch (switchError) {
+        if (switchError?.code === 4001) throw new Error(`Network switch to ${networkName} was declined. Switch networks in Binance Wallet, then reconnect.`);
+        if (switchError?.code === 4902) throw new Error(`${networkName} is not available in Binance Wallet. Select or enable it in the wallet, then reconnect.`);
+        throw new Error(`Binance Wallet could not switch to ${networkName}. Open its network selector, choose ${networkName}, then reconnect.`);
+      }
+      actual = await provider.request({ method: 'eth_chainId' });
+    }
+    if (normalizeChain(actual) !== normalizeChain(chainId)) {
+      const networkName = ({ '56': 'BNB Chain', '8453': 'Base', '1': 'Ethereum' })[chainId] || `chain ${chainId}`;
+      throw new Error(`Binance Wallet did not switch to ${networkName}. Select it in the wallet, then reconnect.`);
+    }
     if (action === 'connect') {
       const accounts = await provider.request({ method: 'eth_requestAccounts' });
       if (!accounts?.[0]) throw new Error('币安钱包未返回 EVM 地址。');
