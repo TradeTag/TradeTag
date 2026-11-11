@@ -97,7 +97,7 @@ async function loadTokenData(chainId, address) {
     const params = new URLSearchParams({ chainId: chain, address: token });
     const [info, candles] = await Promise.all([
       gatewayRequest(`/v1/market/token-info?${params}`),
-      gatewayRequest(`/v1/market/candles?${new URLSearchParams({ chainId: chain, address: token, bar: '1m', limit: '60' })}`)
+      gatewayRequest(`/v1/market/candles?${new URLSearchParams({ chainId: chain, address: token, bar: '15m', limit: '96' })}`)
     ]);
     const basic = info?.basicInfo || {};
     const market = info?.priceInfo || {};
@@ -113,6 +113,7 @@ async function loadTokenData(chainId, address) {
       change24h: market.priceChange24H || '',
       marketCap: market.marketCap || '',
       liquidity: market.liquidity || '',
+      volume24h: market.volume24h ?? market.volume24H ?? market.volume24hUSD ?? market.volume ?? '',
       holders: market.holders ?? null,
       basicInfo: basic,
       priceInfo: market,
@@ -258,3 +259,4 @@ async function pageWalletAction(chainId, action, transaction) {
     return encoded || '1';
   }
 }
+
