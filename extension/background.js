@@ -95,13 +95,12 @@ async function loadTokenData(chainId, address) {
   const key = `token:${chain}:${token}`;
   return cached(key, TOKEN_TTL, async () => {
     const params = new URLSearchParams({ chainId: chain, address: token });
-    const [info, candles] = await Promise.all([
+    const [info, candleRows] = await Promise.all([
       gatewayRequest(`/v1/market/token-info?${params}`),
-      gatewayRequest(`/v1/market/candles?${new URLSearchParams({ chainId: chain, address: token, bar: '15m', limit: '96' })}`)
+      loadCandles(chain, token)
     ]);
     const basic = info?.basicInfo || {};
     const market = info?.priceInfo || {};
-    const candleRows = Array.isArray(candles?.data) ? candles.data : [];
     return {
       chainId: chain,
       address: token,
@@ -122,6 +121,18 @@ async function loadTokenData(chainId, address) {
       canQuote: false
     };
   });
+}
+
+async function loadCandles(chainId, address) {
+  let bestRows = [];
+  for (const bar of ['15m', '5m', '1m']) {
+    const query = new URLSearchParams({ chainId, address, bar, limit: '96' });
+    const response = await gatewayRequest(`/v1/market/candles?${query}`);
+    const rows = Array.isArray(response?.data) ? response.data : [];
+    if (rows.length > bestRows.length) bestRows = rows;
+    if (rows.length >= 5) return rows;
+  }
+  return bestRows;
 }
 
 async function tradeQuote(params = {}) {

@@ -1,7 +1,7 @@
 import './style.css';
 
 const app = document.querySelector('#app');
-const downloadUrl = import.meta.env.VITE_EXTENSION_DOWNLOAD_URL || '/TradeTag-Preview-v0.5.1.zip';
+const downloadUrl = import.meta.env.VITE_EXTENSION_DOWNLOAD_URL || '/TradeTag-Preview-v0.5.2.zip';
 const path = window.location.pathname.replace(/\/$/, '');
 const page = path.endsWith('/product.html') ? 'product'
   : path.endsWith('/security.html') ? 'security'
@@ -66,20 +66,12 @@ function home() {
         <div class="hero-actions"><a class="primary-link" href="/product.html">了解产品 <span>↗</span></a><a class="quiet-link" href="/security.html">先看隐私与安全 <span>→</span></a></div>
         <div class="hero-footnote"><span class="check-mark">✓</span> 支持范围以币安 Web3 API 路由和币安钱包支持情况为准</div>
       </div>
-      <div class="hero-art" role="img" aria-label="深色行情图表视觉">
-        <div class="art-caption"><span>TRADETAG / PRODUCT PREVIEW</span><span>01 — 03</span></div>
-        <div class="timeline-window">
-          <div class="window-head"><span class="window-mark"></span><span>时间线里的代币提及</span><i>···</i></div>
-          <div class="post-row"><div class="post-avatar">M</div><div class="post-copy"><div class="post-user">Market notes <span>@marketnotes · 12 分钟</span></div><p>在关注这个地址，先确认链和流动性再做判断。</p><span class="contract-chip">合约地址 <b>7xKX…pump</b><span class="chip-arrow">↗</span></span></div></div>
-          <div class="trade-preview">
-            <div class="preview-head"><div><span class="preview-label">TRADETAG CARD / 示意</span><h2>资产信息</h2></div><span class="preview-dot"></span></div>
-            <div class="asset-line"><div class="asset-symbol">◎</div><div><strong>代币候选</strong><small>Solana · 地址待核对</small></div><span class="asset-state">待确认</span></div>
-            <div class="chart-surface"><img src="/market-visual.png" alt="" /><div class="chart-status">行情区域 · 接入后显示</div></div>
-            <div class="preview-stats"><div><span>网络</span><b>Solana</b></div><div><span>合约</span><b>待核对</b></div><div><span>交易状态</span><b>演示界面</b></div></div>
-            <div class="preview-button">连接报价后可继续</div>
-          </div>
+      <div class="hero-art" role="group" aria-label="TradeTag X timeline card and trading panel">
+        <div class="hero-gallery">
+          <a class="gallery-image gallery-main" href="/tradetag-x-market-card.png" target="_blank" rel="noreferrer"><img src="/tradetag-x-market-card.png" alt="TradeTag market card displayed beside an X timeline"></a>
+          <a class="gallery-image gallery-detail" href="/tradetag-trade-panel.png" target="_blank" rel="noreferrer"><img src="/tradetag-trade-panel.png" alt="TradeTag token chart and wallet trading panel"></a>
+          <div class="gallery-caption"><span class="gallery-caption-title">TRADETAG / PRODUCT PREVIEW</span><span class="gallery-caption-note">REAL PRODUCT SCREENS</span></div>
         </div>
-        <div class="art-note">界面示意 · 非实时行情</div>
       </div>
     </section>
 
@@ -125,8 +117,8 @@ function security() {
 function install() {
   const ready = Boolean(downloadUrl);
   return `<main class="subpage">
-    <section class="page-hero install-page-hero shell"><div class="section-index">TRADETAG / INSTALL</div><div class="page-hero-content"><p class="kicker">CHROME EXTENSION</p><h1>把 TradeTag<br><span>带到你的时间线。</span></h1><p>公开预览版已连接币安 Web3 API，可查询代币、价格、K 线并获取报价；交易由你安装的币安钱包确认。</p></div><div class="install-card"><img src="/TradeTag-X-Avatar.png" alt="TradeTag 图标"><div><b>TradeTag for Chrome</b><span>公开预览版 · v0.5.1</span></div><span class="install-state">PUBLIC PREVIEW</span></div></section>
-    <section class="install-section"><div class="shell install-layout"><div><p class="kicker">GET STARTED</p><h2>下载并安装扩展</h2><p>网关地址和公开预览访问配置已内置，不需要填写币安 API 凭证。请先安装并解锁币安钱包，再从 X 上的代币卡片发起操作。</p>${ready ? `<a class="primary-link" href="${downloadUrl}" download>下载 TradeTag 扩展 <span>↓</span></a>` : `<span class="disabled-link">下载包准备中 <span>·</span></span>`}<p class="store-note">当前通过网站下载 ZIP；尚未上架 Chrome Web Store，需要在 Chrome 开发者模式中加载。</p></div><div class="install-steps"><article><b>01</b><div><h3>下载并解压</h3><p>下载 ZIP 后解压到电脑上容易找到的位置。</p></div></article><article><b>02</b><div><h3>在 Chrome 加载</h3><p>如已安装旧版，请先在 chrome://extensions 移除旧版。开启开发者模式，点击“加载未打包的扩展程序”，选择包含 manifest.json 的 v0.5.1 解压文件夹，并允许 TradeTag 访问 x.com 和 twitter.com。</p></div></article><article><b>03</b><div><h3>连接币安钱包</h3><p>打开 TradeTag 扩展检查网关连接，然后刷新 X 页面并连接官方币安钱包。币安钱包弹出网络切换请求时，请确认显示的链名与卡片一致；交易使用钱包自带的默认 RPC。</p></div></article></div></div></section>
+    <section class="page-hero install-page-hero shell"><div class="section-index">TRADETAG / INSTALL</div><div class="page-hero-content"><p class="kicker">CHROME EXTENSION</p><h1>把 TradeTag<br><span>带到你的时间线。</span></h1><p>公开预览版已连接币安 Web3 API，可查询代币、价格、K 线并获取报价；交易由你安装的币安钱包确认。</p></div><div class="install-card"><img src="/TradeTag-X-Avatar.png" alt="TradeTag 图标"><div><b>TradeTag for Chrome</b><span>公开预览版 · v0.5.2</span></div><span class="install-state">PUBLIC PREVIEW</span></div></section>
+    <section class="install-section"><div class="shell install-layout"><div><p class="kicker">GET STARTED</p><h2>下载并安装扩展</h2><p>网关地址和公开预览访问配置已内置，不需要填写币安 API 凭证。请先安装并解锁币安钱包，再从 X 上的代币卡片发起操作。</p>${ready ? `<a class="primary-link" href="${downloadUrl}" download>下载 TradeTag 扩展 <span>↓</span></a>` : `<span class="disabled-link">下载包准备中 <span>·</span></span>`}<p class="store-note">当前通过网站下载 ZIP；尚未上架 Chrome Web Store，需要在 Chrome 开发者模式中加载。</p></div><div class="install-steps"><article><b>01</b><div><h3>下载并解压</h3><p>下载 ZIP 后解压到电脑上容易找到的位置。</p></div></article><article><b>02</b><div><h3>在 Chrome 加载</h3><p>如已安装旧版，请先在 chrome://extensions 移除旧版。开启开发者模式，点击“加载未打包的扩展程序”，选择包含 manifest.json 的 v0.5.2 解压文件夹，并允许 TradeTag 访问 x.com 和 twitter.com。</p></div></article><article><b>03</b><div><h3>连接币安钱包</h3><p>打开 TradeTag 扩展检查网关连接，然后刷新 X 页面并连接官方币安钱包。币安钱包弹出网络切换请求时，请确认显示的链名与卡片一致；交易使用钱包自带的默认 RPC。</p></div></article></div></div></section>
     <section class="install-callout shell"><div class="callout-mark">i</div><div><b>公开预览版</b><p>可用资产和交易路由取决于币安 Web3 API 与币安钱包支持情况。每笔交易仍需你在钱包中复核并确认。</p></div><a href="/product.html">查看产品功能 ↗</a></section>
   </main>`;
 }
@@ -177,9 +169,9 @@ const englishText = {
   'TradeTag 会接触哪些钱包信息？':'What wallet information does TradeTag access?','私钥、助记词、登录凭据和交易签名由币安钱包保管，TradeTag 不读取或保存。构建交易时，公开钱包地址会经网关临时发送给币安 Web3 API，网关不记录或持久化。':'Binance Wallet holds your private keys, recovery phrase, login credentials, and transaction signatures; TradeTag does not access or store them. To build a transaction, your public address is temporarily sent through the gateway to Binance Web3 API and is not logged or persisted.',
   'CHROME EXTENSION':'CHROME EXTENSION','把 TradeTag':'Bring TradeTag','带到你的时间线。':'to your timeline.',
   '公开预览版已连接币安 Web3 API，可查询代币、价格、K 线并获取报价；交易由你安装的币安钱包确认。':'The public preview connects to Binance Web3 API for token search, prices, candles, and quotes. Your installed Binance Wallet handles transaction confirmation.',
-  '公开预览版 · v0.5.1':'Public preview · v0.5.1','PUBLIC PREVIEW':'PUBLIC PREVIEW','下载并安装扩展':'Download and install the extension','网关地址和公开预览访问配置已内置，不需要填写币安 API 凭证。请先安装并解锁币安钱包，再从 X 上的代币卡片发起操作。':'The gateway and public preview access configuration are built in; you do not need Binance API credentials. Install and unlock Binance Wallet, then start from a token card on X.','当前通过网站下载 ZIP；尚未上架 Chrome Web Store，需要在 Chrome 开发者模式中加载。':'The ZIP is currently downloaded from this website and is not listed on the Chrome Web Store. Load it in Chrome Developer mode.',
+  '公开预览版 · v0.5.2':'Public preview · v0.5.2','PUBLIC PREVIEW':'PUBLIC PREVIEW','下载并安装扩展':'Download and install the extension','网关地址和公开预览访问配置已内置，不需要填写币安 API 凭证。请先安装并解锁币安钱包，再从 X 上的代币卡片发起操作。':'The gateway and public preview access configuration are built in; you do not need Binance API credentials. Install and unlock Binance Wallet, then start from a token card on X.','当前通过网站下载 ZIP；尚未上架 Chrome Web Store，需要在 Chrome 开发者模式中加载。':'The ZIP is currently downloaded from this website and is not listed on the Chrome Web Store. Load it in Chrome Developer mode.',
   '下载 TradeTag 扩展':'Download TradeTag extension','下载包准备中':'Preparing download','下载并解压':'Download and unzip','下载 ZIP 后解压到电脑上容易找到的位置。':'Download the ZIP and extract it to an easy-to-find folder on your computer.',
-  '在 Chrome 加载':'Load it in Chrome','如已安装旧版，请先在 chrome://extensions 移除旧版。开启开发者模式，点击“加载未打包的扩展程序”，选择包含 manifest.json 的 v0.5.1 解压文件夹，并允许 TradeTag 访问 x.com 和 twitter.com。':'If an older version is installed, remove it in chrome://extensions first. Turn on Developer mode, click “Load unpacked”, select the extracted v0.5.1 folder containing manifest.json, and allow TradeTag to access x.com and twitter.com.','打开 TradeTag 扩展检查网关连接，然后刷新 X 页面并连接官方币安钱包。币安钱包弹出网络切换请求时，请确认显示的链名与卡片一致；交易使用钱包自带的默认 RPC。':'Open TradeTag to check the gateway, refresh X, and connect Binance Wallet. When the wallet asks to switch networks, confirm that the displayed chain matches the card; the wallet uses its own default RPC.',
+  '在 Chrome 加载':'Load it in Chrome','如已安装旧版，请先在 chrome://extensions 移除旧版。开启开发者模式，点击“加载未打包的扩展程序”，选择包含 manifest.json 的 v0.5.2 解压文件夹，并允许 TradeTag 访问 x.com 和 twitter.com。':'If an older version is installed, remove it in chrome://extensions first. Turn on Developer mode, click “Load unpacked”, select the extracted v0.5.2 folder containing manifest.json, and allow TradeTag to access x.com and twitter.com.','打开 TradeTag 扩展检查网关连接，然后刷新 X 页面并连接官方币安钱包。币安钱包弹出网络切换请求时，请确认显示的链名与卡片一致；交易使用钱包自带的默认 RPC。':'Open TradeTag to check the gateway, refresh X, and connect Binance Wallet. When the wallet asks to switch networks, confirm that the displayed chain matches the card; the wallet uses its own default RPC.',
   '连接币安钱包':'Connect Binance Wallet','打开 TradeTag 扩展检查网关连接，然后在 X 上连接官方币安钱包。API 访问配置已内置。':'Open TradeTag and check the gateway connection, then connect Binance Wallet on X. API access is built in.',
   '公开预览版':'Public preview','可用资产和交易路由取决于币安 Web3 API 与币安钱包支持情况。每笔交易仍需你在钱包中复核并确认。':'Available assets and routes depend on Binance Web3 API and Binance Wallet support. Review and confirm every transaction in your wallet.'
 };
@@ -212,7 +204,11 @@ function setLanguage(language) {
   document.querySelectorAll('.brand').forEach((brand) => brand.setAttribute('aria-label', language === 'en' ? 'TradeTag home' : 'TradeTag 首页'));
   document.querySelector('.main-nav')?.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
   document.querySelector('.footer-main nav')?.setAttribute('aria-label', language === 'en' ? 'Footer navigation' : '页脚导航');
-  document.querySelector('.hero-art')?.setAttribute('aria-label', language === 'en' ? 'Market chart interface preview' : '深色行情图表视觉');
+  document.querySelector('.hero-art')?.setAttribute('aria-label', language === 'en' ? 'TradeTag market card beside an X timeline, with the trading panel' : 'X 时间线行情卡片与 TradeTag 交易面板');
+  document.querySelector('.gallery-main img')?.setAttribute('alt', language === 'en' ? 'TradeTag market card displayed beside an X timeline' : 'X 时间线旁显示 TradeTag 行情卡片');
+  document.querySelector('.gallery-detail img')?.setAttribute('alt', language === 'en' ? 'TradeTag token chart and wallet trading panel' : 'TradeTag 代币走势图与钱包交易面板');
+  document.querySelector('.gallery-caption-title')?.replaceChildren(document.createTextNode(language === 'en' ? 'TRADETAG / PRODUCT PREVIEW' : 'TRADETAG / 产品预览'));
+  document.querySelector('.gallery-caption-note')?.replaceChildren(document.createTextNode(language === 'en' ? 'REAL PRODUCT SCREENS' : '真实产品界面'));
   document.querySelector('.menu-toggle')?.setAttribute('aria-label', language === 'en' ? 'Open navigation' : '打开导航');
   document.querySelector('.install-card img')?.setAttribute('alt', language === 'en' ? 'TradeTag icon' : 'TradeTag 图标');
   syncDemoVideo(language);
